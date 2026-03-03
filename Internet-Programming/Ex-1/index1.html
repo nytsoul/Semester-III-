@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+        <!-- External CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Internal CSS Example -->
+        <style>
+            /* Internal CSS for demonstration */
+            #internal-demo {
+                color: #0077cc;
+                font-weight: bold;
+            }
+            .highlighted {
+                background: #ffe4b2;
+                border-radius: 8px;
+                padding: 4px 8px;
+            }
+            .card:hover {
+                background: #e0f7fa;
+                transition: background 0.3s;
+            }
+            /* Animation for fade-in */
+            .fade-in {
+                animation: fadeIn 1.2s ease-in;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        </style>
+</head>
+<body>
+
+<!-- Main Banner Section -->
+<header class="fade-in">
+    <!-- Inline CSS Example -->
+    <h1 id="internal-demo" style="text-shadow: 2px 2px 8px #aaa;">My Portfolio</h1>
+</header>
+
+<section class="about">
+    <h2>About Me</h2>
+    <p>I am a <span class="highlighted">Computer Science Engineering</span> student.</p>
+</section>
+
+<section class="projects">
+        <h2>Projects</h2>
+        <div class="card fade-in" id="project1">Project 1</div>
+        <div class="card fade-in" id="project2">Project 2</div>
+        <!-- Example of CSS Box Model and animation -->
+        <div class="card fade-in" style="border:2px dashed #0077cc; margin-top:20px; animation: fadeIn 2s;">
+            <strong>Animated Card</strong><br>
+            This card demonstrates the box model, transitions, and animation.
+        </div>
+</section>
+
+<!-- Example of different selectors and comments -->
+<footer style="margin-top:40px; text-align:center; color:#888;">
+    <!-- Footer Section -->
+    &copy; 2025 My Portfolio. All rights reserved.
+</footer>
+</body>
+</html>

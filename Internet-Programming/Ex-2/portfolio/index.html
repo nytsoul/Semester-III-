@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Main CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Internal CSS Example: Banner Section */
+        .banner {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            transition: background 0.5s;
+        }
+        .banner:hover {
+            background: linear-gradient(90deg, #8f94fb, #4e54c8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Banner Section -->
+    <header class="banner">
+        <img src="D:\Programming\Internet-Programming\Ex-2\portfolio\images\image.jpeg" alt="Profile" class="profile-img">
+        <h1>Senthil kumar</h1>
+        <p>Web Developer & Designer</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/about.html">About</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Portfolio Section -->
+        <section class="portfolio">
+            <h2>My Projects</h2>
+            <div class="project-card">
+                <img src="images/project1.jpg" alt="Project 1">
+                <h3>Project One</h3>
+                <p>A modern website built with HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="project-card">
+                <img src="images/project2.jpg" alt="Project 2">
+                <h3>Project Two</h3>
+                <p>Responsive design and smooth animations using CSS.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <form onsubmit="return validateContactForm();">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Senthilkumar . All rights reserved.</p>
+    </footer>
+    <!-- Inline CSS Example -->
+    <p style="color: #4e54c8; text-align: center;">Thank you for visiting my portfolio!</p>
+</body>
+<!-- Contact form validation script -->
+<script src="form-validation.js"></script>
+</body>
+</html>

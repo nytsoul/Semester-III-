@@ -1,0 +1,80 @@
+/* External CSS for index1.html demonstration */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #222;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 24px 0 16px 0;
+    box-shadow: 0 2px 8px #2224;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+section {
+    padding: 20px;
+    margin: 24px auto;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px #0001;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #8882;
+    padding: 15px;
+    margin: 10px 0;
+    background: #fafafa;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.card:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 6px 24px #8884;
+    background: #e0f7fa;
+}
+
+.highlighted {
+    background: #ffe4b2;
+    border-radius: 8px;
+    padding: 4px 8px;
+    color: #b35c00;
+}
+
+.fade-in {
+    animation: fadeIn 1.2s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    font-size: 1em;
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 10px;
+        margin: 10px 2px;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    .card {
+        padding: 8px;
+    }
+}

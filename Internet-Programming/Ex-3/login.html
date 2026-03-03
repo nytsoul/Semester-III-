@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flipkart Login</title>
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-white">
+
+
+  <header class="bg-blue-600 text-white">
+    <div class="container mx-auto px-4">
+  
+      <div class="flex items-center justify-between py-2">
+   
+        <div class="flex items-center flex-1">
+          <div class="flex items-center mr-4">
+            <h1 class="text-2xl font-bold italic">Flipkart</h1>
+            <span class="text-xs ml-1 italic">Explore <span class="text-yellow-400">Plus</span></span>
+          </div>
+          
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-xl mx-4">
+            <div class="relative">
+              <input type="text" 
+                placeholder="Search for products, brands and more" 
+                class="w-full py-2 px-4 rounded text-gray-800 focus:outline-none">
+              <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-search text-blue-600"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+ 
+        <div class="flex items-center space-x-6">
+          <button class="bg-white text-blue-600 px-8 py-1 rounded font-semibold hover:bg-gray-100">
+            Login
+          </button>
+          <a href="#" class="hover:underline">Become a Seller</a>
+          <div class="relative group">
+            <a href="#" class="hover:underline flex items-center">
+              More <i class="fas fa-angle-down ml-1"></i>
+            </a>
+          </div>
+          <a href="#" class="hover:underline flex items-center">
+            <i class="fas fa-shopping-cart mr-1"></i> Cart
+          </a>
+        </div>
+      </div>
+
+      <nav class="bg-white text-gray-700 shadow-sm">
+        <div class="flex items-center justify-between py-2 text-sm font-medium">
+          <a href="#" class="hover:text-blue-600 px-4">Electronics</a>
+          <a href="#" class="hover:text-blue-600 px-4">TVs & Appliances</a>
+          <a href="#" class="hover:text-blue-600 px-4">Men</a>
+          <a href="#" class="hover:text-blue-600 px-4">Women</a>
+          <a href="#" class="hover:text-blue-600 px-4">Baby & Kids</a>
+          <a href="#" class="hover:text-blue-600 px-4">Home & Furniture</a>
+          <a href="#" class="hover:text-blue-600 px-4">Sports, Books & More</a>
+          <a href="#" class="hover:text-blue-600 px-4">Flights</a>
+          <a href="#" class="hover:text-blue-600 px-4">Offer Zone</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-4">
+    <div class="bg-white shadow-md w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+      
+      <div class="bg-blue-600 text-white p-10 flex flex-col justify-between">
+        <div>
+          <h2 class="text-3xl font-semibold mb-4">Login</h2>
+          <p class="text-blue-100 text-lg">
+            Get access to your Orders,<br>
+            Wishlist and Recommendations
+          </p>
+        </div>
+        
+
+        <div class="mt-12 mb-8">
+          <div class="relative">
+
+            <div class="flex items-end justify-center space-x-2">
+              <div class="bg-red-500 w-12 h-16 rounded"></div>
+              <div class="bg-white w-32 h-24 rounded-lg flex items-center justify-center">
+                <i class="fas fa-user text-gray-400 text-5xl"></i>
+              </div>
+              <div class="bg-yellow-400 w-12 h-16 rounded"></div>
+            </div>
+
+            <div class="absolute -top-6 right-8">
+              <i class="fas fa-cloud text-yellow-400 text-4xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-10 flex flex-col justify-between">
+        <form class="space-y-6">
+          <div>
+            <input type="text" 
+              placeholder="Enter Email/Mobile number"
+              class="w-full border-b border-gray-300 focus:outline-none focus:border-blue-600 py-3 text-gray-700">
+          </div>
+
+          <p class="text-xs text-gray-500">
+            By continuing, you agree to Flipkart's 
+            <a href="#" class="text-blue-600 hover:underline">Terms of Use</a> and 
+            <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>.
+          </p>
+
+          <button type="submit"
+            class="w-full bg-orange-500 text-white py-3 rounded shadow-md font-semibold hover:bg-orange-600 transition">
+            Request OTP
+          </button>
+        </form>
+
+        <p class="text-center text-sm mt-8">
+          <a href="#" class="text-blue-600 font-semibold hover:underline">
+            New to Flipkart? Create an account
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  
+  <footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">About</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Contact Us</a></li>
+            <li><a href="#" class="hover:underline">About Us</a></li>
+            <li><a href="#" class="hover:underline">Careers</a></li>
+            <li><a href="#" class="hover:underline">Flipkart Stories</a></li>
+            <li><a href="#" class="hover:underline">Press</a></li>
+            <li><a href="#" class="hover:underline">Corporate Information</a></li>
+          </ul>
+        </div>
+
+   
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Group Companies</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Myntra</a></li>
+            <li><a href="#" class="hover:underline">Cleartrip</a></li>
+            <li><a href="#" class="hover:underline">Shopsy</a></li>
+          </ul>
+        </div>
+
+    
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Help</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Payments</a></li>
+            <li><a href="#" class="hover:underline">Shipping</a></li>
+            <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Consumer Policy</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+            <li><a href="#" class="hover:underline">Terms Of Use</a></li>
+            <li><a href="#" class="hover:underline">Security</a></li>
+            <li><a href="#" class="hover:underline">Privacy</a></li>
+            <li><a href="#" class="hover:underline">Sitemap</a></li>
+            <li><a href="#" class="hover:underline">Grievance Redressal</a></li>
+            <li><a href="#" class="hover:underline">EPR Compliance</a></li>
+            <li><a href="#" class="hover:underline">FSSAI Food Safety Connect App</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    
+      <div class="border-t border-gray-700 pt-6 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+         
+          <div>
+            <h4 class="font-semibold text-white mb-2">Mail Us:</h4>
+            <p>
+              Flipkart Internet Private Limited,<br>
+              Buildings Alyssa, Begonia &<br>
+              Clove Embassy Tech Village,<br>
+              Outer Ring Road, Devarabeesanahalli Village,<br>
+              Bengaluru, 560103,<br>
+              Karnataka, India
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-white mb-2">Registered Office Address:</h4>
+            <p>
+              Flipkart Internet Private Limited,<br>
+              Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br>
+              Outer Ring Road, Devarabeesanahalli Village,<br>
+              Bengaluru, 560103, Karnataka, India<br>
+              CIN : U51109KA2012PTC066107<br>
+              Telephone: <a href="tel:044-45614700" class="text-blue-400 hover:underline">044-45614700</a> / 
+              <a href="tel:044-67415800" class="text-blue-400 hover:underline">044-67415800</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center space-x-4 mt-6 text-white">
+          <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook text-xl"></i></a>
+          <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter text-xl"></i></a>
+          <a href="#" class="hover:text-blue-400"><i class="fab fa-youtube text-xl"></i></a>
+          <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram text-xl"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

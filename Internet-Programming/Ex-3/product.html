@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flipkart Products</title>
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .star-rating {
+      color: #fff;
+      background: #ff9f00;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Header/Navigation -->
+  <header class="bg-blue-600 text-white">
+    <div class="container mx-auto px-4">
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between py-2">
+        <!-- Logo and Search -->
+        <div class="flex items-center flex-1">
+          <div class="flex items-center mr-4">
+            <h1 class="text-2xl font-bold italic">Flipkart</h1>
+            <span class="text-xs ml-1 italic">Explore <span class="text-yellow-400">Plus</span></span>
+          </div>
+          
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-xl mx-4">
+            <div class="relative">
+              <input type="text" 
+                placeholder="Search for products, brands and more" 
+                class="w-full py-2 px-4 rounded text-gray-800 focus:outline-none">
+              <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <i class="fas fa-search text-blue-600"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Links -->
+        <div class="flex items-center space-x-6">
+          <a href="login.html" class="bg-white text-blue-600 px-8 py-1 rounded font-semibold hover:bg-gray-100">
+            Login
+          </a>
+          <a href="#" class="hover:underline">Become a Seller</a>
+          <div class="relative group">
+            <a href="#" class="hover:underline flex items-center">
+              More <i class="fas fa-angle-down ml-1"></i>
+            </a>
+          </div>
+          <a href="#" class="hover:underline flex items-center">
+            <i class="fas fa-shopping-cart mr-1"></i> Cart
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="bg-white text-gray-700 shadow-sm">
+        <div class="flex items-center justify-between py-2 text-sm font-medium">
+          <a href="#" class="hover:text-blue-600 px-4">Electronics</a>
+          <a href="#" class="hover:text-blue-600 px-4">TVs & Appliances</a>
+          <a href="#" class="hover:text-blue-600 px-4">Men</a>
+          <a href="#" class="hover:text-blue-600 px-4">Women</a>
+          <a href="#" class="hover:text-blue-600 px-4">Baby & Kids</a>
+          <a href="#" class="hover:text-blue-600 px-4">Home & Furniture</a>
+          <a href="#" class="hover:text-blue-600 px-4">Sports, Books & More</a>
+          <a href="#" class="hover:text-blue-600 px-4">Flights</a>
+          <a href="#" class="hover:text-blue-600 px-4">Offer Zone</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="bg-gray-50 py-4">
+    
+    <!-- Bestsellers Section -->
+    <section class="mb-6">
+      <div class="bg-gradient-to-r from-yellow-200 to-yellow-300 py-6 px-4">
+        <div class="container mx-auto">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Bestsellers</h2>
+          
+          <div class="flex overflow-x-auto space-x-4 scrollbar-hide pb-2">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/l/g/h/-original-imahey8zdfzpssyz.jpeg?q=70" 
+                   alt="Voltas Beko Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Voltas Beko 20 L 700 W Smart Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">2,775</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹5,149</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹6,890.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Wed, 7 Jan</span></p>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/y/w/q/-original-imahcvp7ykwryytj.jpeg?q=70" 
+                   alt="Samsung Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Samsung 32 L Slim Fry, Curd Making Convection & Grill Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">3,220</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹17,690</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹20,000.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery</p>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/r/d/0/-original-imagzfpz4jmcnmsd.jpeg?q=70" 
+                   alt="LG Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                LG 21 L Black Auto Cook Menu Convection Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">3,625</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹11,490</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹14,499.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery as soon as <span class="font-semibold">Tue, 20 Jan, 8 am - 5 pm</span></p>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/j8ndea80/microwave-new/h/w/y/ifb-23bc4-original-imaeygyqvzzbhgg4.jpeg?q=70" 
+                   alt="IFB Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                IFB 23 L Air Fry, 71 Standard Cook Menus Convection Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">87,121</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹10,990</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹14,990.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Tue, 13 Jan</span></p>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/y/d/e/-original-imahd5vkh6myfp8f.jpeg?q=70" 
+                   alt="Haier Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Haier 19 L Inverter Technology Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.3 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">2,973</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹8,500</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹10,500.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Sun, 11 Jan</span> on ₹499.00 of items fulfilled by Amazon</p>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/v/d/u/-original-imahbvgbz5fzzmsh.jpeg?q=70" 
+                   alt="Midea Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Midea 20 L Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.2 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">733</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹4,990</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹9,990.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Tue, 6 Jan</span> on ₹499.00 of items fulfilled by Amazon</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top picks Section -->
+    <section class="mb-6">
+      <div class="bg-gradient-to-r from-blue-800 to-blue-900 py-6 px-4">
+        <div class="container mx-auto">
+          <h2 class="text-2xl font-bold text-white mb-4">Top picks</h2>
+          
+          <div class="flex overflow-x-auto space-x-4 scrollbar-hide pb-2">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/6/a/n/-original-imaheyusjhnte47j.jpeg?q=70" 
+                   alt="Samsung Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Samsung 23 L Auto Cook Programs Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">2,630</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹7,790</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹10,800.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Sat, 10 Jan</span></p>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/jvv9zm80/microwave-new/z/k/4/ifb-30brc2-original-imafhyzhxyzhqfgn.jpeg?q=70" 
+                   alt="IFB Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                IFB 30 L 101 Standard Cook Menus Convection Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">87,121</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹15,490</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹20,390.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Mon, 12 Jan</span></p>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/n/a/6/-original-imaheyusrvwvbgff.jpeg?q=70" 
+                   alt="Samsung Grill Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Samsung 23 L Ceramic Cavity Grill Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.3 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">2,241</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹8,590</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹11,990.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Fri, 9 Jan</span></p>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/z/r/6/-original-imah8yu89zggxajw.jpeg?q=70" 
+                   alt="Panasonic Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Panasonic 20 L Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">8,122</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹6,440</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹7,490.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Thu, 22 Jan</span></p>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/t/j/p/-original-imaghfpgr4ngshg6.jpeg?q=70" 
+                   alt="Whirlpool Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Whirlpool 20 L 18 Auto Cook Recipes Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.2 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">5,079</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹6,490</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹8,775.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Sun, 11 Jan</span></p>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="bg-white rounded-lg shadow-sm p-4 min-w-[200px] flex-shrink-0 hover:shadow-md transition">
+              <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/microwave-new/g/a/d/-original-imahbveggekxtmgz.jpeg?q=70" 
+                   alt="Panasonic Microwave" 
+                   class="w-full h-40 object-contain mb-3">
+              <h3 class="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
+                Panasonic 25 L Solo Microwave Oven
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="star-rating">
+                  4.4 <i class="fas fa-star text-xs"></i>
+                </span>
+                <span class="text-xs text-gray-500">181</span>
+              </div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg font-bold text-gray-900">₹7,350</span>
+                <span class="text-xs text-gray-500 line-through">M.R.P: ₹9,900.00</span>
+              </div>
+              <p class="text-xs text-gray-600">FREE delivery <span class="font-semibold">Tue, 6 Jan</span> on ₹499.00 of items fulfilled by Amazon</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- ABOUT -->
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">About</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Contact Us</a></li>
+            <li><a href="#" class="hover:underline">About Us</a></li>
+            <li><a href="#" class="hover:underline">Careers</a></li>
+            <li><a href="#" class="hover:underline">Flipkart Stories</a></li>
+            <li><a href="#" class="hover:underline">Press</a></li>
+            <li><a href="#" class="hover:underline">Corporate Information</a></li>
+          </ul>
+        </div>
+
+        <!-- GROUP COMPANIES -->
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Group Companies</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Myntra</a></li>
+            <li><a href="#" class="hover:underline">Cleartrip</a></li>
+            <li><a href="#" class="hover:underline">Shopsy</a></li>
+          </ul>
+        </div>
+
+        <!-- HELP -->
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Help</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Payments</a></li>
+            <li><a href="#" class="hover:underline">Shipping</a></li>
+            <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+            <li><a href="#" class="hover:underline">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- CONSUMER POLICY -->
+        <div>
+          <h3 class="text-gray-400 text-xs font-semibold mb-3 uppercase">Consumer Policy</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Cancellation & Returns</a></li>
+            <li><a href="#" class="hover:underline">Terms Of Use</a></li>
+            <li><a href="#" class="hover:underline">Security</a></li>
+            <li><a href="#" class="hover:underline">Privacy</a></li>
+            <li><a href="#" class="hover:underline">Sitemap</a></li>
+            <li><a href="#" class="hover:underline">Grievance Redressal</a></li>
+            <li><a href="#" class="hover:underline">EPR Compliance</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="border-t border-gray-700 pt-6">
+        <div class="text-center text-xs text-gray-400">
+          <p>&copy; 2026 Flipkart. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+        <!-- External CSS -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Internal CSS Example -->
+        <style>
+            /* Internal CSS for demonstration */
+            #internal-demo {
+                color: #0077cc;
+                font-weight: bold;
+            }
+            .highlighted {
+                background: #ffe4b2;
+                border-radius: 8px;
+                padding: 4px 8px;
+            }
+            nav a:hover {
+                color: #ff6600;
+                transition: color 0.3s;
+            }
+            /* Animation for fade-in */
+            .fade-in {
+                animation: fadeIn 1.2s ease-in;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        </style>
+</head>
+<body>
+    <!-- Main Banner Section -->
+    <header class="fade-in">
+        <!-- Inline CSS Example -->
+        <img src="C:\Users\lenovo\Downloads\Senthil.jpeg" alt="Profile Photo" class="profile" style="border-radius:50%; box-shadow:0 4px 16px #888; width:120px; height:120px;"> 
+        <h1 id="internal-demo">Senthilkumar</h1>
+        <p class="highlighted">Web Developer & Student</p>
+    </header>
+    <nav>
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="pages/about.html" class="nav-link">About</a>
+        <a href="#timetable" class="nav-link">Timetable</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <main>
+        <!-- Introduction Section -->
+        <section class="fade-in" id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm <span class="highlighted">Senthilkumar</span>, a passionate web developer and UI/UX Designer. I love building interactive and accessible web applications.</p>
+            <hr>
+            <h3>My Interests</h3>
+            <ul>
+                <li class="interest">Web Development</li>
+                <li class="interest">Open Source</li>
+                <li class="interest">UI/UX Design</li>
+            </ul>
+            <h3>Skills</h3>
+            <ol>
+                <li id="skill-html">HTML5 & CSS3</li>
+                <li id="skill-js">JavaScript</li>
+                <li id="skill-py">Python</li>
+            </ol>
+            <h3>Contact Links</h3>
+            <dl>
+                <dt>Email</dt>
+                <dd><a href="mailto:Senthilkumar.dayanithi@gmail.com">Senthilkumar.dayanithi@gmail.com</a></dd>
+                <dt>GitHub</dt>
+                <dd><a href="https://github.com/nytsoul" target="_blank">github.com/nytsoul</a></dd>
+            </dl>
+            <br>
+            <!-- Code Block Example -->
+            <pre>
+// Sample Code Block
+function greet() {
+    alert('Hello, world!');
+}
+            </pre>
+        </section>
+        <!-- Academic Timetable Section -->
+        <section id="timetable">
+            <h2>Academic Timetable</h2>
+            <table border="1" class="fade-in timetable">
+                <caption>Semester Timetable</caption>
+                <colgroup>
+                    <col span="1" style="background:#f2f2f2">
+                    <col span="5">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>9-10</th>
+                        <th>10-11</th>
+                        <th>11-12</th>
+                        <th>12-1</th>
+                        <th>2-3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>Math</td>
+                        <td>Physics</td>
+                        <td rowspan="2">Lab</td>
+                        <td>Break</td>
+                        <td>English</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td colspan="2">Computer Science</td>
+                        <td>Break</td>
+                        <td>Sports</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>Math</td>
+                        <td>Physics</td>
+                        <td>Chemistry</td>
+                        <td>Break</td>
+                        <td>English</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- Contact Form Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form action="#" method="post" id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male" style="display:inline;">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female" style="display:inline;">Female</label>
+
+                <label>Interests:</label>
+                <input type="checkbox" id="coding" name="interests" value="coding">
+                <label for="coding" style="display:inline;">Coding</label>
+                <input type="checkbox" id="music" name="interests" value="music">
+                <label for="music" style="display:inline;">Music</label>
+
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="">Select</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                </select>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Your message..."></textarea>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </form>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Neshun R. All rights reserved.
+    </footer>
+</body>
+</html>
