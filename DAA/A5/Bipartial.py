@@ -7,8 +7,6 @@ def bpm(graph, u, visited, matchR):
                 matchR[v] = u
                 return True
     return False
-
-
 def max_bipartite_matching(graph, left_nodes, right_nodes):
     matchR = {v: -1 for v in right_nodes}
     result = 0
@@ -20,8 +18,6 @@ def max_bipartite_matching(graph, left_nodes, right_nodes):
 
     return result, matchR
 
-
-# Sample Input
 graph = {
     "A1": ["J1", "J2"],
     "A2": ["J1"],
