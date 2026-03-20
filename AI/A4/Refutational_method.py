@@ -1,8 +1,6 @@
 class ResolutionProver:
-
     def __init__(self):
         self.clauses = []
-
     def add_rule(self, clause):
         self.clauses.append(set(clause))
 

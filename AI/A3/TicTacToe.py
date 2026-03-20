@@ -140,7 +140,5 @@ class TicTacToeGame:
                     print("Draw")
 
                 break
-
-
 game = TicTacToeGame()
 game.play_game()

@@ -1,5 +1,3 @@
-"""Kruskal's algorithm for Minimum Spanning Tree / Forest (supports negative weights)."""
-
 class DSU:
     def __init__(self, n):
         self.parent = list(range(n))
@@ -11,37 +9,32 @@ class DSU:
         return self.parent[x]
 
     def union(self, x, y):
-        rx, ry = self.find(x), self.find(y)
-        if rx == ry:
+        px, py = self.find(x), self.find(y)
+        if px == py:
             return False
-        if self.rank[rx] < self.rank[ry]:
-            self.parent[rx] = ry
-        elif self.rank[ry] < self.rank[rx]:
-            self.parent[ry] = rx
+
+        if self.rank[px] < self.rank[py]:
+            self.parent[px] = py
         else:
-            self.parent[ry] = rx
-            self.rank[rx] += 1
+            self.parent[py] = px
+            if self.rank[px] == self.rank[py]:
+                self.rank[px] += 1
         return True
 
 
-def kruskal_msf(n, edges):
-    edges_sorted = sorted(edges, key=lambda x: (x[2], min(x[0], x[1]), max(x[0], x[1])))
+def kruskal(n, edges):
+    edges.sort(key=lambda x: x[2])  # works with negative weights
+
     dsu = DSU(n)
-    chosen = []
-    cost = 0
-    for u, v, w in edges_sorted:
+    mst = []
+
+    for u, v, w in edges:
         if dsu.union(u, v):
-            chosen.append((u, v, w))
-            cost += w
-    return chosen, cost
+            mst.append((u, v, w))
+
+    return mst
 
 
-if __name__ == '__main__':
-    n = int(input('Vertices: ').strip())
-    m = int(input('Edges: ').strip())
-    edges = [tuple(map(int, input('u v w: ').split())) for _ in range(m)]
-    chosen, cost = kruskal_msf(n, edges)
-    print('Kruskal MST edges:')
-    for u, v, w in chosen:
-        print(u, v, w)
-    print('Total:', cost)
+
+edges = [(0,1,4),(0,2,-2),(1,2,3),(1,3,2)]
+print(kruskal(4, edges))
