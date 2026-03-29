@@ -18,12 +18,7 @@ class Truck:
     available_time: int = 0
     load: int = 0
 
-# ---------------------------------------------------------------------------
-# Greedy heuristic solution
-# ---------------------------------------------------------------------------
-
 def greedy_relief(regions: List[Region], trucks: List[Truck]) -> Tuple[List[Tuple[str, str]], float]:
-    # score = prefer high priority, low cost, short deadline
     regions_sorted = sorted(
         regions,
         key=lambda r: (r.priority / (r.unit_cost + 1e-9)) / (r.deadline + 1),
@@ -45,10 +40,6 @@ def greedy_relief(regions: List[Region], trucks: List[Truck]) -> Tuple[List[Tupl
                     break
 
     return assignments, total_cost
-
-# ---------------------------------------------------------------------------
-# Min-Cost Max-Flow solution (region fulfillment as flow problem)
-# ---------------------------------------------------------------------------
 
 class Edge:
     def __init__(self, v: int, cap: int, cost: float, rev: int):
@@ -162,18 +153,12 @@ def mcmf_relief(regions: List[Region], trucks: List[Truck]) -> Tuple[List[Tuple[
                 used = regions[region_index].demand - e.cap
                 if used > 0:
                     assignments.append((regions[region_index].id, truck.id))
-
-    # convert cost without priorities adjustment
-    # total_cost reflects adjustment; reconstruct actual transport cost
+\
     pure_transport_cost = 0.0
     for r_id, t_id in assignments:
         region = next(r for r in regions if r.id == r_id)
         pure_transport_cost += region.unit_cost * region.demand
     return assignments, pure_transport_cost, flow
-
-# ---------------------------------------------------------------------------
-# Demonstration and sample run
-# ---------------------------------------------------------------------------
 
 def sample_run():
     regions = [

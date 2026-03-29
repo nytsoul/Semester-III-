@@ -16,7 +16,6 @@ class TrafficMonitorBase:
         raise NotImplementedError
 
 
-# 1) Array/List with sorting
 class TrafficMonitorList(TrafficMonitorBase):
     def __init__(self, initial_data: Dict[int, int]):
         self.data = list(initial_data.items())  # list of (id, level)

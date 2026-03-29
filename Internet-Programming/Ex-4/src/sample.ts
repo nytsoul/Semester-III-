@@ -27,13 +27,15 @@ interface BookingMeta {
 type TrainWithMeta = Train & BookingMeta;
 
 class Person {
-    constructor(
-        public passengerId: number,
-        public passengerName: string,
-        public age: number
-    ) {}
+    public passengerId: number
+    public passengerName: string
+    public age: number
+    constructor(passengerId:number,passengerName:string,age:number) {
+        this.passengerId=passengerId,
+        this.passengerName=passengerName,
+        this.age=age
+    }
 }
-
 class PassengerBooking extends Person {
     constructor(
         passengerId: number,
