@@ -41,7 +41,6 @@ class TrafficMonitorList(TrafficMonitorBase):
         return self.data[:k]
 
 
-# 2) Priority Queue using binary heap (max-heap via negative level), lazy deletion
 class TrafficMonitorHeap(TrafficMonitorBase):
     def __init__(self, initial_data: Dict[int, int]):
         self.heap: List[Tuple[int, int]] = []
@@ -82,7 +81,6 @@ class TrafficMonitorHeap(TrafficMonitorBase):
         return result
 
 
-# 3) Balanced Binary Search Tree (sorted list approximation)
 class TrafficMonitorBST(TrafficMonitorBase):
     def __init__(self, initial_data: Dict[int, int]):
         self.id_to_level: Dict[int, int] = initial_data.copy()
@@ -111,11 +109,11 @@ class TrafficMonitorBST(TrafficMonitorBase):
         return [(i, -level_neg) for level_neg, i in self.sorted[:k]]
 
 
-# Benchmark harness
 def benchmark(intersections: int, updates: int, queries: int, top_k: int):
     random.seed(0)
     initial_data = {i: random.randint(0, 100) for i in range(intersections)}
-    updates_data = [(random.randrange(intersections), random.randint(0, 100)) for _ in range(updates)]
+    updates_data = [(random.randrange(intersections), random.randint(0, 100)) 
+    for _ in range(updates)]
 
     monitors = {
         'list': TrafficMonitorList(initial_data),
@@ -159,7 +157,8 @@ def run_experiment():
     for n in sizes:
         r = benchmark(n, updates, queries, top_k)
         for name, stats in r.items():
-            print(f'{n}, {name}, {stats["update_time"]:.6f}, {stats["get_time"]:.9f}, {stats["topk_time"]:.9f}')
+            print(f'{n}, {name}, {stats["update_time"]:.6f}, {stats["get_time"]:.9f}, 
+            {stats["topk_time"]:.9f}')
             report.append((n, name, stats))
     return report
 
