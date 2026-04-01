@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginStudent, getEventsByStudent } from "../services/api";
-import { LoginRequest, StudentEvent } from "../types";
+import { registerStudent } from "../services/api";
+import { Student } from "../types";
 
-interface LoginPageProps {
-  onEventsLoaded?: (events: StudentEvent[], studentName: string) => void;
-}
-
-// Using localStorage to pass events between Login and Events page
-function LoginPage({ onEventsLoaded }: LoginPageProps) {
+function RegisterPage() {
   const navigate = useNavigate();
 
-  const [form, setForm] = useState<LoginRequest>({ email: "", password: "" });
+  const [form, setForm] = useState<Student>({
+    rollNumber: "",
+    name: "",
+    email: "",
+    password: "",
+  });
+
   const [loading, setLoading] = useState<boolean>(false);
-  const [fetchingEvents, setFetchingEvents] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -24,43 +25,24 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
-    if (!form.email || !form.password) {
-      setError("Email and password are required.");
+    if (!form.rollNumber || !form.name || !form.email || !form.password) {
+      setError("All fields are required.");
       return;
     }
 
     setLoading(true);
     try {
-      const loginResponse = await loginStudent(form);
+      // POST /api/students/register
+      await registerStudent(form);
 
-      if (!loginResponse.success || !loginResponse.student) {
-        setError(loginResponse.message || "Invalid credentials.");
-        setLoading(false);
-        return;
-      }
-
-      const { rollNumber, name } = loginResponse.student;
-
-      setLoading(false);
-      setFetchingEvents(true);
-
-      // GET /api/events/student/{rollNumber}
-      const events = await getEventsByStudent(rollNumber);
-
-      // Store in sessionStorage for Events page
-      sessionStorage.setItem("studentName", name);
-      sessionStorage.setItem("studentRollNumber", rollNumber);
-      sessionStorage.setItem("studentEvents", JSON.stringify(events));
-
-      if (onEventsLoaded) onEventsLoaded(events, name);
-
-      navigate("/events");
+      setSuccess("Registration successful! Redirecting to login...");
+      setTimeout(() => navigate("/login"), 1500);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Login failed. Please try again.");
+      setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
     } finally {
       setLoading(false);
-      setFetchingEvents(false);
     }
   };
 
@@ -68,11 +50,9 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center p-6">
       <div className="w-full max-w-lg">
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Student Login</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Student Registration</h1>
           <p className="text-sm text-gray-500 mt-1">
-            POST <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">/api/students/login</span>
-            &nbsp; then &nbsp;
-            GET <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">/api/events/student/&#123;rollNumber&#125;</span>
+            POST <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">/api/students/register</span>
           </p>
         </div>
 
@@ -81,19 +61,42 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
           {error}
         </div>
       )}
-
-      {fetchingEvents && (
-        <div className="mb-4 p-3 bg-blue-50 border border-blue-100 rounded-lg text-sm text-blue-700 max-w-md flex items-center gap-2">
-          <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          Fetching your event registrations...
+      {success && (
+        <div className="mb-4 p-3 bg-green-50 border border-green-100 rounded-lg text-sm text-green-700 max-w-md">
+          {success}
         </div>
       )}
 
       <div className="bg-white border border-gray-100 rounded-xl p-6 max-w-md shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+              Roll Number
+            </label>
+            <input
+              type="text"
+              name="rollNumber"
+              value={form.rollNumber}
+              onChange={handleChange}
+              placeholder="e.g. CS2021003"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="e.g. Rahul Kumar"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            />
+          </div>
+
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
               Email ID
@@ -124,26 +127,26 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
 
           <button
             type="submit"
-            disabled={loading || fetchingEvents}
+            disabled={loading}
             className="w-full py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors mt-2 flex items-center justify-center gap-2"
           >
-            {(loading || fetchingEvents) && (
+            {loading && (
               <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
             )}
-            {fetchingEvents ? "Loading Events..." : loading ? "Authenticating..." : "Login & View Events"}
+            {loading ? "Registering..." : "Register Student"}
           </button>
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-4">
-          New student?{" "}
+          Already registered?{" "}
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
             className="text-blue-600 hover:underline font-medium"
           >
-            Register here
+            Login here
           </button>
         </p>
       </div>
@@ -152,4 +155,4 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

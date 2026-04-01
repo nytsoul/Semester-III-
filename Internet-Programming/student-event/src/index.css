@@ -17,6 +17,21 @@
   .input {
     @apply mb-3 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-gray-800 shadow-sm outline-none placeholder:text-gray-400 focus:border-gray-900 focus:ring-2 focus:ring-gray-200;
   }
+}
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: "Work Sans", "Segoe UI", Tahoma, Geneva, Verdana,
+      sans-serif;
+    background-color: #f8f5ef;
+  }
+}
+
+@layer components {
+  .input {
+    @apply mb-3 w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-gray-800 shadow-sm outline-none placeholder:text-gray-400 focus:border-gray-900 focus:ring-2 focus:ring-gray-200;
+  }
 
   .card {
     @apply rounded-2xl border border-black/5 bg-white/95 shadow-[0_18px_50px_-32px_rgba(0,0,0,0.55)];
