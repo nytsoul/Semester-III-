@@ -67,13 +67,8 @@ function LoginPage({ onEventsLoaded }: LoginPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center p-6">
       <div className="w-full max-w-lg">
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Student Login</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            POST <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">/api/students/login</span>
-            &nbsp; then &nbsp;
-            GET <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-xs">/api/events/student/&#123;rollNumber&#125;</span>
-          </p>
+        <div className="mb-5 text-center">
+          <h1 className="text-2xl font-bold text-gray-900">Student login form</h1>
         </div>
 
       {error && (
