@@ -1,115 +1,71 @@
-SET SERVEROUTPUT ON;
+drop table vote;
+drop table candidate;
+drop table voter;
+drop table booth;
+CREATE TABLE booth (
+    boothid NUMBER,
+    constituency_id NUMBER,
+    location VARCHAR2(50),
+    bincharge VARCHAR2(50),
+    CONSTRAINT pk_booth PRIMARY KEY (boothid, constituency_id)
+);
 
-CREATE OR REPLACE TRIGGER trg_check_capacity
-BEFORE INSERT OR UPDATE ON RESERVATION
-FOR EACH ROW
-DECLARE
-v_capacity NUMBER;
-v_total NUMBER;
-BEGIN
-SELECT capacity INTO v_capacity
-FROM BOAT
-WHERE boat_id = :NEW.boat_id;
+CREATE TABLE voter (
+    voterid NUMBER CONSTRAINT pk_voter PRIMARY KEY ,
+    votername VARCHAR2(50),
+    gender CHAR(1) CONSTRAINT chk_gender CHECK (gender IN ('F','M','O')),
+    dob DATE,
+    boothid NUMBER,
+    constituency_id NUMBER,
+    CONSTRAINT fk_voter_booth FOREIGN KEY (boothid, constituency_id)
+        REFERENCES booth(boothid, constituency_id)
+        ON DELETE CASCADE
+);
+CREATE TABLE candidate (
+    candidate_id NUMBER CONSTRAINT pk_candidate PRIMARY KEY,
+    candidate_name VARCHAR2(50),
+    party VARCHAR2(50),
+    constituency_id NUMBER
+);
 
-v_total := :NEW.no_of_people + :NEW.no_of_children;
+CREATE TABLE vote (
+    voter_id NUMBER CONSTRAINT fk_vote_voter REFERENCES voter(voterid),
+    candidate_id NUMBER CONSTRAINT fk_vote_candidate REFERENCES candidate(candidate_id),
+    vote_date DATE,
+ CONSTRAINT pk_vote PRIMARY KEY (voter_id, candidate_id)
+);
 
-IF v_total > v_capacity THEN
-RAISE_APPLICATION_ERROR(-20001,'Total passengers exceed boat capacity');
-END IF;
+INSERT INTO booth VALUES (1, 101, 'Chennai North', 'Officer A');
+INSERT INTO booth VALUES (2, 101, 'Chennai South', 'Officer B');
+INSERT INTO booth VALUES (3, 102, 'Madurai East', 'Officer C');
+INSERT INTO booth VALUES (4, 102, 'Madurai West', 'Officer D');
+INSERT INTO booth VALUES (5, 103, 'Coimbatore Central', 'Officer E');
 
-EXCEPTION
-WHEN NO_DATA_FOUND THEN
-DBMS_OUTPUT.PUT_LINE('Boat not found');
-END;
-/
+INSERT INTO voter VALUES (1001, 'Ravi', 'M', TO_DATE('2000-05-10','YYYY-MM-DD'), 1, 101);
+INSERT INTO voter VALUES (1002, 'Priya', 'F', TO_DATE('1998-03-12','YYYY-MM-DD'), 1, 101);
+INSERT INTO voter VALUES (1003, 'Kumar', 'M', TO_DATE('1995-07-22','YYYY-MM-DD'), 2, 101);
+INSERT INTO voter VALUES (1004, 'Anjali', 'F', TO_DATE('2001-01-15','YYYY-MM-DD'), 2, 101);
+INSERT INTO voter VALUES (1005, 'Suresh', 'M', TO_DATE('1999-09-09','YYYY-MM-DD'), 3, 102);
+INSERT INTO voter VALUES (1006, 'Meena', 'F', TO_DATE('2002-11-30','YYYY-MM-DD'), 3, 102);
+INSERT INTO voter VALUES (1007, 'Arun', 'M', TO_DATE('1997-04-18','YYYY-MM-DD'), 4, 102);
+INSERT INTO voter VALUES (1008, 'Divya', 'F', TO_DATE('2000-06-25','YYYY-MM-DD'), 5, 103);
 
-CREATE OR REPLACE TRIGGER trg_check_sail_date
-BEFORE INSERT OR UPDATE ON RESERVATION
-FOR EACH ROW
-BEGIN
-IF :NEW.sail_date < :NEW.resv_date THEN
-RAISE_APPLICATION_ERROR(-20002,'Sail date cannot be earlier than reservation date');
-END IF;
-END;
-/
+INSERT INTO candidate VALUES (201, 'Rajesh', 'Party A', 101);
+INSERT INTO candidate VALUES (202, 'Lakshmi', 'Party B', 101);
+INSERT INTO candidate VALUES (203, 'Vikram', 'Party C', 102);
+INSERT INTO candidate VALUES (204, 'Nisha', 'Party D', 102);
+INSERT INTO candidate VALUES (205, 'Manoj', 'Party E', 103);
 
-CREATE OR REPLACE TRIGGER trg_payment_success
-AFTER INSERT OR UPDATE ON PAYMENT
-FOR EACH ROW
-BEGIN
-IF :NEW.p_status = 'SUCCESS' THEN
-UPDATE RESERVATION
-SET status='CONFIRMED'
-WHERE resv_id=:NEW.resv_id;
-END IF;
-END;
-/
+INSERT INTO vote VALUES (1001, 201, SYSDATE);
+INSERT INTO vote VALUES (1002, 202, SYSDATE);
+INSERT INTO vote VALUES (1003, 201, SYSDATE);
+INSERT INTO vote VALUES (1004, 202, SYSDATE);
+INSERT INTO vote VALUES (1005, 203, SYSDATE);
+INSERT INTO vote VALUES (1006, 204, SYSDATE);
+INSERT INTO vote VALUES (1007, 203, SYSDATE);
+INSERT INTO vote VALUES (1008, 205, SYSDATE);
 
-CREATE OR REPLACE TRIGGER trg_payment_validation
-AFTER INSERT OR UPDATE ON PAYMENT
-FOR EACH ROW
-DECLARE
-v_total_payment NUMBER;
-v_required_amount NUMBER;
-v_price NUMBER;
-v_people NUMBER;
-BEGIN
-
-SELECT price
-INTO v_price
-FROM BOAT B, RESERVATION R
-WHERE B.boat_id = R.boat_id
-AND R.resv_id = :NEW.resv_id;
-
-SELECT no_of_people + no_of_children
-INTO v_people
-FROM RESERVATION
-WHERE resv_id = :NEW.resv_id;
-
-v_required_amount := v_price * v_people;
-
-SELECT NVL(SUM(amount),0)
-INTO v_total_payment
-FROM PAYMENT
-WHERE resv_id = :NEW.resv_id
-AND p_status = 'SUCCESS';
-
-IF v_total_payment >= v_required_amount THEN
-UPDATE RESERVATION
-SET status='CONFIRMED'
-WHERE resv_id=:NEW.resv_id;
-ELSE
-UPDATE RESERVATION
-SET status='PENDING'
-WHERE resv_id=:NEW.resv_id;
-END IF;
-
-EXCEPTION
-WHEN NO_DATA_FOUND THEN
-DBMS_OUTPUT.PUT_LINE('Reservation not found');
-END;
-/
-
-CREATE OR REPLACE VIEW Reservation_Details AS
-SELECT resv_id,boat_id,sailor_id,tourist_id,resv_date,sail_date,no_of_people,no_of_children
-FROM RESERVATION;
-
-CREATE OR REPLACE TRIGGER trg_insert_reservation_view
-INSTEAD OF INSERT ON Reservation_Details
-FOR EACH ROW
-BEGIN
-INSERT INTO RESERVATION
-(resv_id,boat_id,sailor_id,tourist_id,resv_date,sail_date,no_of_people,no_of_children,status)
-VALUES
-(:NEW.resv_id,:NEW.boat_id,:NEW.sailor_id,:NEW.tourist_id,
-:NEW.resv_date,:NEW.sail_date,:NEW.no_of_people,:NEW.no_of_children,'PENDING');
-END;
-/
-
-BEGIN
-INSERT INTO Reservation_Details
-VALUES('R101','B01','S01','T01',SYSDATE,SYSDATE+2,3,1);
-
-DBMS_OUTPUT.PUT_LINE('Reservation inserted successfully');
-END;
-/
+select * from voter;
+select * from candidate;
+select * from vote;
+select * from booth:

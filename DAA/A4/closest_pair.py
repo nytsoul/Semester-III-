@@ -1,7 +1,5 @@
 
 import math
-
-
 def distance(p1, p2):
     return math.hypot(p1[0] - p2[0], p1[1] - p2[1])
 
@@ -16,8 +14,6 @@ def brute_force(points):
                 best = d
                 best_pair = (points[i], points[j])
     return best, best_pair
-
-
 
 def strip_closest(strip, d):
     best = d
